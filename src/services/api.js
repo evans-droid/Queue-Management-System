@@ -32,7 +32,6 @@ export const initializeSocket = () => {
 
     socket.on('connect_error', (error) => {
       console.error('❌ Socket connection error:', error);
-      toast.error('Real-time connection lost. Page will auto-refresh.');
     });
   }
   return socket;
