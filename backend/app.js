@@ -16,7 +16,12 @@ const app = express();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3001', 'http://localhost:5000'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3001',
+    'http://localhost:5000',
+    'https://your-frontend.netlify.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -27,8 +32,8 @@ app.use('/api', queueRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'healthy', 
+  res.json({
+    status: 'healthy',
     timestamp: new Date().toISOString()
   });
 });
@@ -36,7 +41,7 @@ app.get('/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('❌ Error:', err.stack);
-  res.status(500).json({ 
+  res.status(500).json({
     error: 'Something went wrong!',
     message: process.env.NODE_ENV === 'development' ? err.message : undefined
   });

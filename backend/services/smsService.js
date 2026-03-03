@@ -33,9 +33,17 @@ initTwilio();
  * Send queue confirmation SMS
  */
 const sendQueueConfirmationSMS = async (customer, queuePosition) => {
+  console.log('📱 SMS Debug - Customer data:', JSON.stringify(customer));
+  console.log('📱 SMS Debug - Phone:', customer.phone);
+  
   if (!client) {
     console.log('ℹ️ SMS skipped (Twilio not configured): Confirmation for', customer.full_name);
     return true;
+  }
+  
+  if (!customer.phone) {
+    console.error('❌ Error: Phone number is missing from customer data');
+    return false;
   }
   
   try {

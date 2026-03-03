@@ -94,6 +94,9 @@ const registerCustomer = async (req, res) => {
     const position = await getQueuePosition(customer.id, queueNumber);
 
     // Send notifications
+    console.log('📨 Controller - Customer data for SMS:', JSON.stringify(customer));
+    console.log('📨 Controller - Phone field:', customer.phone);
+    
     await Promise.allSettled([
       sendQueueConfirmation(customer, position),
       sendQueueConfirmationSMS(customer, position)
