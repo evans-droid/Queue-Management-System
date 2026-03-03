@@ -1,4 +1,0 @@
-# API requests are handled by netlify.toml redirects
-# Frontend routes handled by SPA fallback
-# Only non-API routes fallback to index.html
-/*    /index.html   200

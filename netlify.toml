@@ -5,8 +5,15 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# API proxy to backend (must be before SPA fallback)
 [[redirects]]
   from = "/api/*"
   to = "https://queue-management-system-vp5s.onrender.com/:splat"
   status = 200
   force = true
+
+# SPA fallback - all other routes serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
