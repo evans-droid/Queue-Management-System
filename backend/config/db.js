@@ -5,6 +5,14 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+// Debug: Log database configuration (without password)
+console.log('🔍 DB Config:', {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 3306,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER
+});
+
 // Create Sequelize instance
 const sequelize = new Sequelize(
   process.env.DB_NAME,
