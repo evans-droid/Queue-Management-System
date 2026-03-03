@@ -6,10 +6,10 @@ import axios from 'axios';
 import io from 'socket.io-client';
 import toast from 'react-hot-toast';
 
-// Use relative URL in production (goes through Netlify redirects)
+// Use direct backend URL in production to avoid Netlify redirect issues
 // Use localhost:3001 in development
 const API_URL = import.meta.env.PROD 
-  ? '/api' 
+  ? 'https://queue-management-system-vp5s.onrender.com/api' 
   : 'http://localhost:3001/api';
 
 // Create axios instance
