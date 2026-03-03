@@ -20,7 +20,7 @@ app.use(cors({
     'http://localhost:5173',
     'http://localhost:3001',
     'http://localhost:5000',
-    'https://your-frontend.netlify.app'
+    'https://queuesm.netlify.app/'
   ],
   credentials: true
 }));
