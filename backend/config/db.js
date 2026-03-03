@@ -1,6 +1,6 @@
 /**
  * Database Configuration
- * Sets up Sequelize connection to MySQL
+ * Sets up Sequelize connection to PostgreSQL
  */
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
@@ -8,20 +8,20 @@ require('dotenv').config();
 // Debug: Log database configuration (without password)
 console.log('🔍 DB Config:', {
   host: process.env.DB_HOST,
-  port: process.env.DB_PORT || 3306,
+  port: process.env.DB_PORT || 5432,
   database: process.env.DB_NAME,
   user: process.env.DB_USER
 });
 
-// Create Sequelize instance
+// Create Sequelize instance for PostgreSQL
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 3306,
-    dialect: 'mysql',
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
     logging: false,
     pool: {
       max: 5,
