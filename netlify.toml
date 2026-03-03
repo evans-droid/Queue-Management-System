@@ -7,6 +7,6 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://queue-management-system-vp5s.onrender.com"
+  to = "https://queue-management-system-vp5s.onrender.com/:splat"
   status = 200
   force = true
