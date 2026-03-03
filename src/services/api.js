@@ -6,7 +6,11 @@ import axios from 'axios';
 import io from 'socket.io-client';
 import toast from 'react-hot-toast';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// Use relative URL in production (goes through Netlify redirects)
+// Use localhost:3001 in development
+const API_URL = import.meta.env.PROD 
+  ? '/api' 
+  : 'http://localhost:3001/api';
 
 // Create axios instance
 const api = axios.create({
