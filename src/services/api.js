@@ -25,7 +25,13 @@ let socket = null;
 
 export const initializeSocket = () => {
   if (!socket) {
-    socket = io(import.meta.env.VITE_API_URL || 'http://localhost:3001', {
+    // Use relative URL in production (goes through Netlify redirects)
+    // Use localhost:3001 in development
+    const SOCKET_URL = import.meta.env.PROD 
+      ? window.location.origin.replace(':3000', ':3001')
+      : 'http://localhost:3001';
+    
+    socket = io(SOCKET_URL, {
       withCredentials: true,
       transports: ['websocket', 'polling']
     });
